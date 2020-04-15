@@ -33,3 +33,24 @@
   - Test
     - Debug x64 => OK
     - Release x64 => OK
+- STEP 7 :
+  - Project > Publish > Create App Package (choose x64 only)
+  - Windows App Certification Kit fails the Supported API test
+  ```
+  API _XcptFilter in msvcrt.dll is not supported for this application type. clrcompression.dll calls this API.
+  API __C_specific_handler in msvcrt.dll is not supported for this application type. clrcompression.dll calls this API.
+  API _amsg_exit in msvcrt.dll is not supported for this application type. clrcompression.dll calls this API.
+  API _initterm in msvcrt.dll is not supported for this application type. clrcompression.dll calls this API.
+  API free in msvcrt.dll is not supported for this application type. clrcompression.dll calls this API.
+  API malloc in msvcrt.dll is not supported for this application type. clrcompression.dll calls this API.
+  API memcpy in msvcrt.dll is not supported for this application type. clrcompression.dll calls this API.
+  API memset in msvcrt.dll is not supported for this application type. clrcompression.dll calls this API.
+  API __CxxFrameHandler4 in vcruntime140_1_app.dll is not supported for this application type. TestRNWRelease.exe calls this API.
+  API ExecuteAssembly in uwphost.dll is not supported for this application type. UWPShim.exe calls this API.
+  API DllGetActivationFactory in uwphost.dll is not supported for this application type. UWPShim.exe has an export that forwards to this API.
+  ```
+  - it also fails the Windows security features test
+  ```
+  File C:\Program Files\WindowsApps\17704UpSignOn.UpSignOn_1.0.1.0_x64__a7xkq6qkvjapw\clrcompression.dll has failed the AppContainerCheck check.
+  File C:\Program Files\WindowsApps\17704UpSignOn.UpSignOn_1.0.1.0_x64__a7xkq6qkvjapw\clrjit.dll has failed the AppContainerCheck check.
+  ```
