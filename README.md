@@ -54,3 +54,20 @@
   File C:\Program Files\WindowsApps\17704UpSignOn.UpSignOn_1.0.1.0_x64__a7xkq6qkvjapw\clrcompression.dll has failed the AppContainerCheck check.
   File C:\Program Files\WindowsApps\17704UpSignOn.UpSignOn_1.0.1.0_x64__a7xkq6qkvjapw\clrjit.dll has failed the AppContainerCheck check.
   ```
+
+END OF THE REPRODUCIBLE DEMO
+
+- ATTEMPT to increase the target platform minimum version to 10.0.17134.0 for both CustomNativeModule and TestRNWRelease
+
+  - Debug&Release x64 build OK but **crash at runtime** on start (even after Clean Rebuild)
+
+- ATTEMPT to increase the target platform minimum version to 10.0.16299.0 for CustomNativeModule only
+
+  - Debug x64 builds OK but **fails at runtime** (Release not tested)
+
+- ATTEMPT creating the custom native module for 10.0.17763
+
+  - DEBUG x64 **fails at runtime**
+  - DEBUG x86 **fails at runtime**
+
+- ATTEMPT building for x86 targetting minimum 10.0.15063.0
