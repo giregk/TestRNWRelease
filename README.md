@@ -19,3 +19,17 @@
     API __CxxFrameHandler4 in vcruntime140_1_app.dll is not supported for this application type. TestRNWRelease.exe calls this API.
     ```
     which is OK since it does not occur in the Store validation
+- STEP 6 :
+  - Right click solution > Add > New Project
+  - Select `Windows Runtime Component (Universal Windows) C#`
+  - Name it CustomNativeModule
+  - Change Minimum version to `Windows 10 Creators Update (10.0; Build 15063)`
+  - Right click on the CustomNativeModule project > Add > Reference
+    - Project tab : select Microsoft.ReactNative
+    - Shared Project tab : select Microsoft.ReactNative.SharedManaged
+  - Expand the References of CustomNativeModule, right click the Microsoft.ReactNative library, choose Properties. Set Copy Local to false
+  - Expose Device Model API
+  - Add reference to CustomNativeModule in TestRNWRelease
+  - Test
+    - Debug x64 => OK
+    - Release x64 => OK

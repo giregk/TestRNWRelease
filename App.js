@@ -6,7 +6,7 @@
  * @flow
  */
 
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
@@ -14,6 +14,7 @@ import {
   View,
   Text,
   StatusBar,
+  NativeModules,
 } from 'react-native';
 
 import {
@@ -25,6 +26,12 @@ import {
 } from 'react-native/Libraries/NewAppScreen';
 
 const App: () => React$Node = () => {
+  const [model, setModel] = useState('');
+  useEffect(() => {
+    NativeModules.DeviceModel.getDeviceModel((result) => {
+      setModel(result);
+    });
+  });
   return (
     <>
       <StatusBar barStyle="dark-content" />
@@ -33,6 +40,7 @@ const App: () => React$Node = () => {
           contentInsetAdjustmentBehavior="automatic"
           style={styles.scrollView}>
           <Header />
+          <Text>{model}</Text>
           {global.HermesInternal == null ? null : (
             <View style={styles.engine}>
               <Text style={styles.footer}>Engine: Hermes</Text>
